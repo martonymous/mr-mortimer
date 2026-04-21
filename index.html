@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Mortimer</title>
+    <style>
+        /* Basic reset for clean edges */
+        body, html { margin: 0; padding: 0; font-family: sans-serif; height: 100%; box-sizing: border-box; }
+        
+        /* Top Menu Bar */
+        .top-bar {
+            height: 60px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            padding-top: 60px; /* Push content down below top bar */
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Side Menu Bar */
+        .side-bar {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        /* Hidden Side Menu State */
+        .side-bar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            padding: 40px;
+            margin-left: 250px; /* Make room for sidebar */
+            transition: margin-left 0.3s ease;
+            width: 100%;
+        }
+
+        /* Main Content Area when Sidebar is Hidden */
+        .main-content.expanded {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Menu -->
+    <div class="top-bar">
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <h2>Mr. Mortimer</h2>
+    </div>
+
+    <div class="container">
+        <!-- Side Menu -->
+        <div class="side-bar" id="sideBar">
+            <p>Link 1</p>
+            <p>Link 2</p>
+            <p>Link 3</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <h1>Mr. Mortimer</h1>
+            <p>Site content will go here.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle the collapsible menu -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideBar').classList.toggle('collapsed');
+            document.getElementById('mainContent').classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>
